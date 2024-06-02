@@ -6,13 +6,19 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.3.0</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
 	<groupId>com.konoplastiy</groupId>
 	<artifactId>kanap-transactinal-microservice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>kanap-main</name>
 	<description>Demo project for Spring Boot</description>
+	<modules>
+		<module>kanap-api</module>
+		<module>kanap-persistence</module>
+		<module>kanap-server</module>
+		<module>kanap-service</module>
+	</modules>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
