@@ -10,5 +10,11 @@
 
     <artifactId>kanap-persistence</artifactId>
 
-    <dependencies></dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>kanap-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 </project>
