@@ -1,6 +1,6 @@
 services:
   localstack:
-    image: artifactory.ops.ripple.com:6555/localstack/localstack:2.2.0
+    image: localstack/localstack:2.2.0
     environment:
       - SERVICES=dynamodb
       - DEBUG=${LEDGER_LOCALSTACK_DEBUG:-0}
@@ -15,5 +15,5 @@ services:
       - ./scripts/init-aws.sh:/etc/localstack/init/ready.d/init-aws.sh
       - ./scripts/init-ddb.sh:/tmp/localstack/init-ddb.sh
 networks:
-  ledger-network:
+  kanap-network:
     driver: bridge
