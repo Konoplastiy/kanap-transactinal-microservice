@@ -1,1 +1,21 @@
+# Server settings
+server:
+  port: 8080
+
+# Spring settings
+spring:
+  application:
+    name: kanap
+  cloud:
+    aws:
+      region: eu-north-1
+
+
+#AWS properties
+kanap:
+  aws:
+    dynamodb:
+      accessKey: accessKey
+      secretKey: secretKey
+      endpoint: http://localhost:4566
 

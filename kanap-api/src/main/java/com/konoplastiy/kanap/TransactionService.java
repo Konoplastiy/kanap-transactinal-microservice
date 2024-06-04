@@ -3,16 +3,13 @@ package com.konoplastiy.kanap;
 import com.konoplastiy.kanap.model.TransactionDTO;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface TransactionService {
 
-    List<TransactionDTO> getAllProducts();
-
-    TransactionDTO getProductById(String id);
-
-    TransactionDTO createNewProduct(TransactionDTO dto);
-
-    TransactionDTO updateProduct(String id, TransactionDTO dto);
-
-    void deleteProduct(String id);
+    Optional<TransactionDTO> findById(String transactionId);
+    TransactionDTO save(TransactionDTO transactionalDto);
+    void delete(String transactionId);
+    List<TransactionDTO> getAllTransactions();
+    TransactionDTO update(TransactionDTO transactionalDto);
 }
