@@ -1,5 +1,6 @@
 services:
   localstack:
+    container_name: localstack
     image: localstack/localstack:2.2.0
     environment:
       - SERVICES=dynamodb
