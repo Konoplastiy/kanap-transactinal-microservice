@@ -52,15 +52,15 @@ public class TransactionController {
             @RequestBody TransactionDTO transactionDto,
             @PathVariable("transactionId") String transactionId
     ) {
-        TransactionDTO updatedTransaction = transactionService.updateTransaction(transactionDto, transactionId);
+        TransactionDTO response = transactionService.updateTransaction(transactionDto, transactionId);
         log.info("Successfully updated transaction with ID: {}", transactionId);
-        return ResponseEntity.ok(updatedTransaction);
+        return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/{transactionId}")
     public ResponseEntity<TransactionDTO> deleteTransaction(@PathVariable("transactionId") String transactionId) {
-        TransactionDTO deletedTransaction = transactionService.deleteTransaction(transactionId);
+        TransactionDTO response = transactionService.deleteTransaction(transactionId);
         log.info("Deleting transaction with ID: {}", transactionId);
-        return ResponseEntity.ok(deletedTransaction);
+        return ResponseEntity.ok(response);
     }
 }

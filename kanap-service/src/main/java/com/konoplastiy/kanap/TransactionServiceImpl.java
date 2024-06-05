@@ -43,8 +43,8 @@ public class TransactionServiceImpl implements TransactionService {
     @Transactional
     public TransactionDTO saveTransaction(TransactionDTO transactionalDto) {
         Transaction transaction = dtoToEntityConverter.convert(transactionalDto);
-        transaction = transactionRepository.save(transaction);
-        return entityToDTOConverter.convert(transaction);
+        Transaction savetransaction = transactionRepository.save(transaction);
+        return entityToDTOConverter.convert(savetransaction);
     }
 
     @Override
