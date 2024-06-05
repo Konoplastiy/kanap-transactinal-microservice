@@ -7,9 +7,9 @@ import java.util.Optional;
 
 public interface TransactionService {
 
-    Optional<TransactionDTO> findById(String transactionId);
-    TransactionDTO save(TransactionDTO transactionalDto);
-    void delete(String transactionId);
+    Optional<TransactionDTO> findTransactionById(String transactionId);
+    TransactionDTO saveTransaction(TransactionDTO transactionalDto);
+    TransactionDTO deleteTransaction(String transactionId);
     List<TransactionDTO> getAllTransactions();
-    TransactionDTO update(TransactionDTO transactionalDto);
+    TransactionDTO updateTransaction(TransactionDTO transactionalDto);
 }
