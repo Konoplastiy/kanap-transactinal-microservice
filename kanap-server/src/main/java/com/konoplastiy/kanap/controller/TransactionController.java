@@ -2,8 +2,6 @@ package com.konoplastiy.kanap.controller;
 
 
 import com.konoplastiy.kanap.TransactionService;
-import com.konoplastiy.kanap.converter.TransactionDTOToEntityConverter;
-import com.konoplastiy.kanap.converter.TransactionEntityToDTOConverter;
 import com.konoplastiy.kanap.model.TransactionDTO;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -54,8 +52,8 @@ public class TransactionController {
             @RequestBody TransactionDTO transactionDto,
             @PathVariable("transactionId") String transactionId
     ) {
-        TransactionDTO updatedTransaction = transactionService.updateTransaction(transactionDto);
-        log.info("Updating transaction with ID: {}", transactionId);
+        TransactionDTO updatedTransaction = transactionService.updateTransaction(transactionDto, transactionId);
+        log.info("Successfully updated transaction with ID: {}", transactionId);
         return ResponseEntity.ok(updatedTransaction);
     }
 

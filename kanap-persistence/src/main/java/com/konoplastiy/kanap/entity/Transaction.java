@@ -15,7 +15,7 @@ import java.time.Instant;
 @AllArgsConstructor
 @NoArgsConstructor
 @DynamoDBTable(tableName = "TransactionInfo")
-public class Transaction  {
+public class Transaction {
 
     @DynamoDBHashKey(attributeName = "transaction_id")
     @DynamoDBAttribute(attributeName = "transaction_id")
