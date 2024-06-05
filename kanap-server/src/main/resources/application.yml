@@ -8,14 +8,12 @@ spring:
     name: kanap
   cloud:
     aws:
-      region: eu-north-1
+      credentials:
+        access-key: "fake-access-key"
+        secret-key: "fake-secret-key"
 
-
-#AWS properties
+# Project settings
 kanap:
   aws:
-    dynamodb:
-      accessKey: accessKey
-      secretKey: secretKey
-      endpoint: http://localhost:4566
-
+    endpoint: http://localhost:4566
+    region: us-west-2
