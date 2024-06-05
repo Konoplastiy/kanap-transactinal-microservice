@@ -9,6 +9,7 @@ import com.konoplastiy.kanap.model.TransactionDTO;
 import com.konoplastiy.kanap.repository.TransactionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -27,6 +28,7 @@ public class TransactionServiceImpl implements TransactionService {
 
 
     @Override
+    @Transactional(readOnly = true)
     public Optional<TransactionDTO> findTransactionById(String transactionId) {
         return Optional.ofNullable(transactionRepository.findById(transactionId)
                 .map(entityToDTOConverter::convert)
@@ -38,6 +40,7 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
+    @Transactional
     public TransactionDTO saveTransaction(TransactionDTO transactionalDto) {
         Transaction transaction = dtoToEntityConverter.convert(transactionalDto);
         transaction = transactionRepository.save(transaction);
@@ -45,6 +48,7 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
+    @Transactional
     public TransactionDTO deleteTransaction(String transactionId) {
         Transaction transaction = transactionRepository.findById(transactionId)
                 .orElseThrow(() -> new TransactionNotFoundException(
@@ -58,6 +62,7 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<TransactionDTO> getAllTransactions() {
         Iterable<Transaction> transactions = transactionRepository.findAll();
         return StreamSupport.stream(transactions.spliterator(), false)
@@ -66,10 +71,11 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public TransactionDTO updateTransaction(TransactionDTO transactionDto) {
-        Transaction existingTransaction = transactionRepository.findById(transactionDto.getTransactionId())
+    @Transactional
+    public TransactionDTO updateTransaction(TransactionDTO transactionDto, String transactionId) {
+        Transaction existingTransaction = transactionRepository.findById(transactionId)
                 .orElseThrow(() -> new TransactionNotFoundException(
-                                String.format("Transaction with id %s not found", transactionDto.getTransactionId())
+                                String.format("Transaction with id %s not found", transactionId)
                         )
                 );
         Transaction updatedTransaction = dtoToEntityConverter.convert(transactionDto);
