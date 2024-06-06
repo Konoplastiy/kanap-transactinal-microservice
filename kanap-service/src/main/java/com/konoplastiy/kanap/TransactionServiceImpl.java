@@ -26,7 +26,6 @@ public class TransactionServiceImpl implements TransactionService {
     private final TransactionEntityToDTOConverter entityToDTOConverter;
     private final TransactionEntityUpdater transactionEntityUpdater;
 
-
     @Override
     @Transactional(readOnly = true)
     public Optional<TransactionDTO> findTransactionById(String transactionId) {

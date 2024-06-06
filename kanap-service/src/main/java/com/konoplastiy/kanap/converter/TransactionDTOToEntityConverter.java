@@ -10,12 +10,9 @@ public class TransactionDTOToEntityConverter implements Converter<TransactionDTO
     @Override
     public Transaction convert(TransactionDTO source) {
         return Transaction.builder()
-                .transactionId(source.getTransactionId())
-                .sk(source.getSk())
                 .transactionType(source.getTransactionType())
                 .amount(source.getAmount())
                 .timestamp(source.getTimestamp())
-                .description(source.getDescription())
                 .currency(source.getCurrency())
                 .status(source.getStatus())
                 .build();

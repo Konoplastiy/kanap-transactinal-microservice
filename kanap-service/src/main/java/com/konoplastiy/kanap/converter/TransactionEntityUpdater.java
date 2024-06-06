@@ -9,7 +9,6 @@ public class TransactionEntityUpdater {
         existingTransaction.setTransactionType(updatedTransaction.getTransactionType());
         existingTransaction.setAmount(updatedTransaction.getAmount());
         existingTransaction.setTimestamp(updatedTransaction.getTimestamp());
-        existingTransaction.setDescription(updatedTransaction.getDescription());
         existingTransaction.setCurrency(updatedTransaction.getCurrency());
         existingTransaction.setStatus(updatedTransaction.getStatus());
     }
