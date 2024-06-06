@@ -22,12 +22,16 @@
     </modules>
 
     <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <aws.sdk.version>2.25.55</aws.sdk.version>
         <lombok.version>1.18.30</lombok.version>
         <spring-boot-dependencies.version>3.3.0</spring-boot-dependencies.version>
-        <spring-data-dynamodb.version>5.1.0</spring-data-dynamodb.version>
+        <spring-data-dynamodb.version>5.2.5</spring-data-dynamodb.version>
         <spring-aws-java-sdk-dynamodb>1.12.714</spring-aws-java-sdk-dynamodb>
         <junit-bom.version>5.9.0</junit-bom.version>
+        <testng.version>7.10.2</testng.version>
     </properties>
 
     <dependencyManagement>
@@ -73,9 +77,15 @@
             <version>${spring-aws-java-sdk-dynamodb}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.derjust</groupId>
+            <groupId>io.github.boostchicken</groupId>
             <artifactId>spring-data-dynamodb</artifactId>
             <version>${spring-data-dynamodb.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

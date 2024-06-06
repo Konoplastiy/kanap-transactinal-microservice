@@ -1,11 +1,7 @@
 package com.konoplastiy.kanap.model;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -14,25 +10,16 @@ import java.time.Instant;
 @Getter
 @EqualsAndHashCode
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class TransactionDTO {
-
-    @NotBlank
-    private String transactionId;
-
-    @NotBlank
-    private String sk;
 
     @NotBlank
     private String transactionType;
 
-    @NotNull
     private BigDecimal amount;
 
-    @NotNull
     private Instant timestamp;
-
-    @NotBlank
-    private String description;
 
     @NotBlank
     private String currency;
