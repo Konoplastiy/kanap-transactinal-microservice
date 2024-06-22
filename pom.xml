@@ -32,6 +32,7 @@
         <spring-aws-java-sdk-dynamodb>1.12.714</spring-aws-java-sdk-dynamodb>
         <junit-bom.version>5.9.0</junit-bom.version>
         <testng.version>7.10.2</testng.version>
+        <micrometer-registry-prometheus.version>1.13.1</micrometer-registry-prometheus.version>
     </properties>
 
     <dependencyManagement>
@@ -86,6 +87,11 @@
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+            <version>${micrometer-registry-prometheus.version}</version>
         </dependency>
     </dependencies>
 

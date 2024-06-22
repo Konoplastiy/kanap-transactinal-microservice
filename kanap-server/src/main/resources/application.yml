@@ -12,6 +12,19 @@ spring:
         access-key: "fake-access-key"
         secret-key: "fake-secret-key"
 
+management:
+  endpoint:
+    health:
+      show-components: always
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus,metrics,beans
+  statsd:
+    metrics:
+      export:
+        enabled: false
+
 # Project settings
 kanap:
   aws:

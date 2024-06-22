@@ -5,6 +5,8 @@ import static org.testng.Assert.assertEquals;
 
 import com.konoplastiy.kanap.TransactionService;
 import com.konoplastiy.kanap.model.TransactionDTO;
+import io.micrometer.core.instrument.MeterRegistry;
+import org.mockito.Mock;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.springframework.http.ResponseEntity;
@@ -20,13 +22,16 @@ public class TransactionControllerTest {
 
     private static final String TRANSACTION_ID = "1";
 
-    private TransactionController controller;
+    @Mock
     private TransactionService serviceMock;
+    @Mock
+    private MeterRegistry meterRegistryMock;
+    private TransactionController controller;
 
     @BeforeMethod
     public void setUp() {
         serviceMock = mock(TransactionService.class);
-        controller = new TransactionController(serviceMock);
+        controller = new TransactionController(serviceMock, meterRegistryMock);
         MockHttpServletRequest request = new MockHttpServletRequest();
         RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
     }

@@ -11,10 +11,32 @@ services:
     ports:
       - "4566:4566"
     volumes:
-      - /tmp/localstack:/tmp/localstack
+      - ${TEMPDIR:-/tmp/localstack}:/tmp/localstack
       - /var/run/docker.sock:/var/run/docker.sock
       - ./scripts/init-aws.sh:/etc/localstack/init/ready.d/init-aws.sh
       - ./scripts/init-ddb.sh:/tmp/localstack/init-ddb.sh
+
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - 9090:9090
+    networks:
+      - kanap-network
+    volumes:
+      - ./config/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - 3000:3000
+    networks:
+      - kanap-network
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - ./config/grafana/datasources.yml:/etc/grafana/datasources
+
 networks:
   kanap-network:
     driver: bridge
