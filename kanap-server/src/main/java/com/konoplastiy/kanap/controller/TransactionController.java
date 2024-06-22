@@ -44,7 +44,7 @@ public class TransactionController {
     }
 
     @PostMapping
-    public ResponseEntity<TransactionDTO> saveTransaction(@Valid @RequestBody final TransactionDTO transactionDTO) {
+    public ResponseEntity<TransactionDTO> saveTransaction(@Valid @RequestBody TransactionDTO transactionDTO) {
         TransactionDTO response = transactionService.saveTransaction(transactionDTO);
         log.info("Save a new transaction");
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
