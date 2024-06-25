@@ -32,6 +32,7 @@
         <spring-aws-java-sdk-dynamodb>1.12.714</spring-aws-java-sdk-dynamodb>
         <junit-bom.version>5.9.0</junit-bom.version>
         <testng.version>7.10.2</testng.version>
+        <easy-random.version>5.0.0</easy-random.version>
         <micrometer-registry-prometheus.version>1.13.1</micrometer-registry-prometheus.version>
     </properties>
 
@@ -82,6 +83,13 @@
             <artifactId>spring-data-dynamodb</artifactId>
             <version>${spring-data-dynamodb.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.jeasy</groupId>
+            <artifactId>easy-random-core</artifactId>
+            <version>${easy-random.version}</version>
+            <scope>test</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
