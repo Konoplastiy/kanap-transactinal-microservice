@@ -25,8 +25,6 @@ public class TransactionDTOToEntityConverterTest {
 
         assertNotNull(actual);
         assertEquals(actual.getTransactionType(), expected.getTransactionType());
-        assertEquals(actual.getAmount(), expected.getAmount());
-        assertEquals(actual.getTimestamp(), expected.getTimestamp());
         assertEquals(actual.getCurrency(), expected.getCurrency());
         assertEquals(actual.getStatus(), expected.getStatus());
     }

@@ -17,10 +17,6 @@ public class TransactionDTO {
     @NotBlank
     private String transactionType;
 
-    private BigDecimal amount;
-
-    private Instant timestamp;
-
     @NotBlank
     private String currency;
 

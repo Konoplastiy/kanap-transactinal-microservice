@@ -25,8 +25,6 @@ public class TransactionEntityUpdaterTest {
 
         assertNotNull(existingTransaction);
         assertEquals(existingTransaction.getTransactionType(), updatedTransaction.getTransactionType());
-        assertEquals(existingTransaction.getAmount(), updatedTransaction.getAmount());
-        assertEquals(existingTransaction.getTimestamp(), updatedTransaction.getTimestamp());
         assertEquals(existingTransaction.getCurrency(), updatedTransaction.getCurrency());
         assertEquals(existingTransaction.getStatus(), updatedTransaction.getStatus());
     }
