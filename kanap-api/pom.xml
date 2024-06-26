@@ -8,11 +8,4 @@
     </parent>
 
     <artifactId>kanap-api</artifactId>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-actuator</artifactId>
-        </dependency>
-    </dependencies>
 </project>

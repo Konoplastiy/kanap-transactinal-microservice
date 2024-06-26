@@ -3,6 +3,7 @@ package com.konoplastiy.kanap.controller;
 
 import com.konoplastiy.kanap.TransactionService;
 import com.konoplastiy.kanap.model.TransactionDTO;
+import io.micrometer.core.instrument.MeterRegistry;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,10 +25,12 @@ import static com.konoplastiy.kanap.ApplicationConstants.URLConstants.BASE_URL_T
 public class TransactionController {
 
     private final TransactionService transactionService;
+    private final MeterRegistry meterRegistry;
 
     @GetMapping
     public ResponseEntity<List<TransactionDTO>> getAllTransactions() {
         List<TransactionDTO> response = transactionService.getAllTransactions();
+        this.meterRegistry.counter("request_counter").increment();
         log.info("Fetching all transactions");
         return ResponseEntity.ok(response);
     }
@@ -41,7 +44,7 @@ public class TransactionController {
     }
 
     @PostMapping
-    public ResponseEntity<TransactionDTO> saveTransaction(@Valid @RequestBody final TransactionDTO transactionDTO) {
+    public ResponseEntity<TransactionDTO> saveTransaction(@Valid @RequestBody TransactionDTO transactionDTO) {
         TransactionDTO response = transactionService.saveTransaction(transactionDTO);
         log.info("Save a new transaction");
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
