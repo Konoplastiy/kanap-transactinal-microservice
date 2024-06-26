@@ -11,8 +11,6 @@ public class TransactionEntityToDTOConverter implements Converter<Transaction, T
     public TransactionDTO convert(Transaction source) {
         return TransactionDTO.builder()
                 .transactionType(source.getTransactionType())
-                .amount(source.getAmount())
-                .timestamp(source.getTimestamp())
                 .currency(source.getCurrency())
                 .status(source.getStatus())
                 .build();
