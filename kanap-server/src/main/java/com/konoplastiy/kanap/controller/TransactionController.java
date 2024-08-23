@@ -30,8 +30,8 @@ public class TransactionController {
     @GetMapping
     public ResponseEntity<List<TransactionDTO>> getAllTransactions() {
         List<TransactionDTO> response = transactionService.getAllTransactions();
-        this.meterRegistry.counter("request_counter").increment();
         log.info("Fetching all transactions");
+        this.meterRegistry.counter("request_counter").increment();
         return ResponseEntity.ok(response);
     }
 
@@ -40,6 +40,7 @@ public class TransactionController {
             @PathVariable("transactionId") String transactionId) {
         Optional<TransactionDTO> response = transactionService.findTransactionById(transactionId);
         log.info("Find the transaction by {} id", transactionId);
+        this.meterRegistry.counter("request_counter").increment();
         return ResponseEntity.ok(response);
     }
 
@@ -47,6 +48,7 @@ public class TransactionController {
     public ResponseEntity<TransactionDTO> saveTransaction(@Valid @RequestBody TransactionDTO transactionDTO) {
         TransactionDTO response = transactionService.saveTransaction(transactionDTO);
         log.info("Save a new transaction");
+        this.meterRegistry.counter("request_counter").increment();
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
@@ -57,6 +59,7 @@ public class TransactionController {
     ) {
         TransactionDTO response = transactionService.updateTransaction(transactionDto, transactionId);
         log.info("Successfully updated transaction with ID: {}", transactionId);
+        this.meterRegistry.counter("request_counter").increment();
         return ResponseEntity.ok(response);
     }
 
@@ -64,6 +67,7 @@ public class TransactionController {
     public ResponseEntity<TransactionDTO> deleteTransaction(@PathVariable("transactionId") String transactionId) {
         TransactionDTO response = transactionService.deleteTransaction(transactionId);
         log.info("Deleting transaction with ID: {}", transactionId);
+        this.meterRegistry.counter("request_counter").increment();
         return ResponseEntity.ok(response);
     }
 }

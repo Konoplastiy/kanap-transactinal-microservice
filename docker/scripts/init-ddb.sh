@@ -41,6 +41,16 @@ transaction_info_table_definition="
       --region us-west-2"
 awslocal $transaction_info_table_definition
 
+transaction_info_table_definition="
+      dynamodb create-table
+      --table-name TransactionInfo
+      --attribute-definitions AttributeName=transaction_id,AttributeType=S
+      --key-schema AttributeName=transaction_id,KeyType=HASH
+      --billing-mode PAY_PER_REQUEST
+      --region us-west-2"
+$transaction_info_table_definition
+
+
 echo Listing Tables ...
 awslocal dynamodb list-tables
 
@@ -69,5 +79,17 @@ insert_data="
         \"status\": {\"S\": \"Pending\"}
       }'"
 awslocal $insert_data
+
+insert_data="
+      dynamodb put-item
+      --table-name TransactionInfo
+      --item='{
+        \"transaction_id\": {\"S\": \"12345\"},
+        \"transaction_type\": {\"S\": \"Credit\"},
+        \"currency\": {\"S\": \"USD\"},
+        \"status\": {\"S\": \"Completed\"}
+      }'"
+awslocal $insert_data
+
 
 echo Data Inserted.

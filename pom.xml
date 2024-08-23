@@ -31,9 +31,9 @@
         <spring-data-dynamodb.version>5.2.5</spring-data-dynamodb.version>
         <spring-aws-java-sdk-dynamodb>1.12.714</spring-aws-java-sdk-dynamodb>
         <junit-bom.version>5.9.0</junit-bom.version>
-        <testng.version>7.10.2</testng.version>
         <easy-random.version>5.0.0</easy-random.version>
         <micrometer-registry-prometheus.version>1.13.1</micrometer-registry-prometheus.version>
+        <mockito-junit-jupiter.version>5.12.0</mockito-junit-jupiter.version>
     </properties>
 
     <dependencyManagement>
@@ -89,17 +89,18 @@
             <version>${easy-random.version}</version>
             <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>${testng.version}</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-prometheus</artifactId>
             <version>${micrometer-registry-prometheus.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>${mockito-junit-jupiter.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -108,6 +109,11 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.diffplug.spotless</groupId>
+                <artifactId>spotless-maven-plugin</artifactId>
+                <version>2.43.0</version>
             </plugin>
         </plugins>
     </build>

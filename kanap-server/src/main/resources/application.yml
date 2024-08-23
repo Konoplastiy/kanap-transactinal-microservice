@@ -11,6 +11,8 @@ spring:
       credentials:
         access-key: "fake-access-key"
         secret-key: "fake-secret-key"
+      region:
+        static: us-west-2
 
 management:
   endpoint:
