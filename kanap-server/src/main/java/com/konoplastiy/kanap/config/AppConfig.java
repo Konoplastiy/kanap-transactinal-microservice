@@ -11,7 +11,7 @@ public class AppConfig {
     @Bean
     MeterBinder meterBinder() {
         return meterRegistry -> {
-            Counter.builder("kanap_count")
+            Counter.builder("request_counter")
                     .description("Amount of requests")
                     .register(meterRegistry);
         };
